@@ -1,9 +1,10 @@
 HELP.md
+bin/
+data/
 target/
 .mvn
 mvnw
 mvnw.cmd
-data/
 
 ### STS ###
 .apt_generated
