@@ -32,15 +32,13 @@ This project is built in two parts
 ### Front-End Setup
 * Make sure to have Node.js and Angular CLI installed in the local machine
 * To install the dependencies, run `npm install` in the console
-* To run the front-end, run `ng serve in the console` and in the browser, go to `http://localhost:4200`
+* To run the front-end, run `ng serve` in the console and in the browser, go to `http://localhost:4200`
 * The website is best viewed in **Google Chrome**
 
-#### Screenshots
-Desktop
-
+### Screenshots
+#### Desktop
 ![alt text](src/main/frontend/assets/images/screenshot-desktop.png "Screenshot Desktop")
 
-Ipad
-
+#### Ipad
 ![alt text](src/main/frontend/assets/images/screenshot-ipad.png "Screenshot IPad")
 
