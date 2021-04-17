@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "swagger",
+  "type": "com.hpc.config.SwaggerConfig",
+  "description": "The swagger configuration"
+}]}

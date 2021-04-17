@@ -1,0 +1,26 @@
+<h2 class="headline">{{headline}}</h2>
+<form #form="ngForm" [formGroup]="shipForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Ship Code</mat-label>
+    <input matInput autocomplete="off" type="text" formControlName="code" required>
+    <mat-error *ngIf="shipForm?.get('code')?.invalid">Invalid ship code, should be in a format of AAAA-1111-A1 where A is any character from the Latin alphabet and 1 is a number from 0 to 9</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Ship Name</mat-label>
+    <input matInput autocomplete="off" type="text" formControlName="name" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Ship Length (in meters)</mat-label>
+    <input matInput autocomplete="off" type="number" formControlName="length" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Ship Width (in meters)</mat-label>
+    <input matInput autocomplete="off" type="number" formControlName="width" required>
+  </mat-form-field>
+  <button *ngIf="mode === 'create'" class="submit-button" mat-stroked-button [disabled]="!shipForm.valid" (click)="addShip($event)">
+    Submit <mat-icon>arrow_right_alt</mat-icon>
+  </button>
+  <button *ngIf="mode === 'edit'" class="submit-button" mat-flat-button color="primary" [disabled]="!shipForm.valid" (click)="updateShip($event)">
+    Submit <mat-icon>arrow_right_alt</mat-icon>
+  </button>
+</form>

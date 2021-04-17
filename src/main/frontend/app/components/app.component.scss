@@ -1,0 +1,88 @@
+.left-panel,
+.right-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.right-panel {
+  padding: 0 20px;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 33px;
+
+  img {
+    width: 100px;
+  }
+  figcaption {
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    margin-left: 8px;
+  }
+}
+
+.left-panel {
+  background-color: #01c1d6;
+  color: #fff;
+  position: relative;
+}
+
+.shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 0;
+
+  svg {
+    transform: scale(2);
+    overflow: hidden;
+    position: inherit;
+    top: inherit;
+    bottom: inherit;
+    right: inherit;
+    transform-origin: center left;
+    display: block;
+    width: auto;
+    height: 100%;
+
+    path {
+      fill: #fafafa;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .left-panel {
+    height: 600px;
+  }
+  .right-panel {
+    height: 100%;
+    padding: 20px;
+  }
+  .shape {
+    top: inherit;
+    bottom: -1px;
+
+    svg {
+      transform: scale(1);
+      position: initial;
+      transform-origin: top center;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .left-panel {
+    height: 620px;
+  }
+}

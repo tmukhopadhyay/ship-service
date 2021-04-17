@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: password
+    url: jdbc:h2:file:./data/shipdb
+    username: sa
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+swagger:
+  base-package: com.hpc.ship.controllers
+  contact-email: tamal.mukherjee10@gmail.com
+  contact-name: Tamal Mukhopadhyay
+  title: Ship Service
+  version: 1.0.0
