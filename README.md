@@ -6,7 +6,7 @@ This project is created with
 * Java: 8
 * Spring Boot: 2.4.5
 * Maven: 3.6.3
-* Node.js 14.15.4
+* Node.js: 14.15.4
 * Angular: 11.2.9
 
 This project is built in two parts
@@ -24,8 +24,8 @@ This project is built in two parts
 ### Back-End Setup
 * You would need to install the [lombok plugin for eclipse](https://projectlombok.org/setup/eclipse)
 * To run the back-end
-  * Either in the ID, right click on `ship-service -> Run As -> Spring Boot App`
-  * Or in the console write `mvn spring-boot:run`
+  * Either in the IDE, right click on `ship-service -> Run As -> Spring Boot App`
+  * Or in the console run `mvn spring-boot:run`
 * This project uses swagger ui to work with the APIs, go to [Swagger UI](http://localhost:8080/swagger-ui.html) to launch the same and test the APIs.
 * This project also uses an embedded H2 database, with the data backed up in the data folder, go to [H2 Console](http://localhost:8080/h2-console) to check the data
 
