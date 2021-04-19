@@ -14,15 +14,14 @@ This project is built in two parts
 * Back-End: Which uses the spring framework
 
 ### Dependencies
-* Spring Boot Starter Data JPA
-* Spring Boot Starter Web
+* [Spring Boot](https://spring.io/projects/spring-boot)
 * [H2 Database](https://www.h2database.com/html/main.html)
 * [Project Lombok](https://projectlombok.org/)
 * [Node.js](https://nodejs.org/en/) version 14.15.4
 * [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9
 
 ### Back-End Setup
-* You would need to install the [lombok plugin for eclipse](https://projectlombok.org/setup/eclipse)
+* If using eclipse, you would need to install the [lombok plugin for eclipse](https://projectlombok.org/setup/eclipse)
 * To run the back-end
   * Either in the IDE, right click on `ship-service -> Run As -> Spring Boot App`
   * Or in the console run `mvn spring-boot:run`
