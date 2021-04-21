@@ -28,6 +28,7 @@ export class ShipFormComponent implements OnInit, OnDestroy {
   });
 
   private createShipSubscription?: Subscription;
+  private updateShipSubscription?: Subscription;
   private editShipSubscription?: Subscription;
 
   constructor(
@@ -55,7 +56,7 @@ export class ShipFormComponent implements OnInit, OnDestroy {
 
   public updateShip(event: Event) {
     event.preventDefault();
-    this.createShipSubscription = this.httpService.updateShip(this.shipForm?.value).subscribe((ships: Array<Ship>) => {
+    this.updateShipSubscription = this.httpService.updateShip(this.shipForm?.value).subscribe((ships: Array<Ship>) => {
       this.appStore.setShips(ships);
       this.onUpdate.emit(true);
     });
@@ -63,6 +64,7 @@ export class ShipFormComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy() {
     if(this.createShipSubscription) { this.createShipSubscription.unsubscribe(); }
+    if(this.updateShipSubscription) { this.updateShipSubscription.unsubscribe(); }
     if(this.editShipSubscription) { this.editShipSubscription.unsubscribe(); }
   }
 }
