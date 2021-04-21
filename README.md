@@ -14,15 +14,14 @@ This project is built in two parts
 * Back-End: Which uses the spring framework
 
 ### Dependencies
-* Spring Boot Starter Data JPA
-* Spring Boot Starter Web
+* [Spring Boot](https://spring.io/projects/spring-boot)
 * [H2 Database](https://www.h2database.com/html/main.html)
 * [Project Lombok](https://projectlombok.org/)
 * [Node.js](https://nodejs.org/en/) version 14.15.4
 * [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9
 
 ### Back-End Setup
-* You would need to install the [lombok plugin for eclipse](https://projectlombok.org/setup/eclipse)
+* If using eclipse, you would need to install the [lombok plugin for eclipse](https://projectlombok.org/setup/eclipse)
 * To run the back-end
   * Either in the IDE, right click on `ship-service -> Run As -> Spring Boot App`
   * Or in the console run `mvn spring-boot:run`
@@ -30,7 +29,7 @@ This project is built in two parts
 * This project also uses an embedded H2 database, with the data backed up in the data folder, go to [H2 Console](http://localhost:8080/h2-console) to check the data
 
 ### Front-End Setup
-* Make sure to have Node.js and Angular CLI installed in the local machine
+* Make sure to have Node.js installed in the local machine
 * To install the dependencies, run `npm install` in the console
 * To run the front-end, run `ng serve` in the console and in the browser, go to `http://localhost:4200`
 * The website is best viewed in **Google Chrome**
