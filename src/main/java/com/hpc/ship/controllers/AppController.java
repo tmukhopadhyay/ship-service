@@ -54,30 +54,27 @@ public class AppController {
 	}
 
 	@PostMapping(value = "/ships", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ShipResponseDto>> addShip(@RequestBody ShipPayloadDto shipPayloadDto) {
+	public ResponseEntity<ShipResponseDto> addShip(@RequestBody ShipPayloadDto shipPayloadDto) {
 		ValidationUtils.validateShipCreationPayload(shipPayloadDto);
-		List<Ship> ships = appService.addShip(TransformUtils.transformToShipEntity(shipPayloadDto));
+		Ship newShip = appService.addShip(TransformUtils.transformToShipEntity(shipPayloadDto));
 		return new ResponseEntity<>(
-			ships.parallelStream().map(TransformUtils::transformToShipResponseDto).collect(Collectors.toList()),
+			TransformUtils.transformToShipResponseDto(newShip),
 			HttpStatus.OK
 		);
 	}
 
 	@DeleteMapping(value = "/ships/{shipId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ShipResponseDto>> deleteShip(@PathVariable UUID shipId) {
-		List<Ship> ships = appService.deleteShip(shipId);
-		return new ResponseEntity<>(
-			ships.parallelStream().map(TransformUtils::transformToShipResponseDto).collect(Collectors.toList()),
-			HttpStatus.OK
-		);
+	public ResponseEntity<Void> deleteShip(@PathVariable UUID shipId) {
+		appService.deleteShip(shipId);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/ships", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ShipResponseDto>> updateShip(@RequestBody ShipPayloadDto shipPayloadDto) {
+	public ResponseEntity<ShipResponseDto> updateShip(@RequestBody ShipPayloadDto shipPayloadDto) {
 		ValidationUtils.validateShipUpdationPayload(shipPayloadDto);
-		List<Ship> ships = appService.updateShip(shipPayloadDto);
+		Ship updatedShip = appService.updateShip(shipPayloadDto);
 		return new ResponseEntity<>(
-			ships.parallelStream().map(TransformUtils::transformToShipResponseDto).collect(Collectors.toList()),
+			TransformUtils.transformToShipResponseDto(updatedShip),
 			HttpStatus.OK
 		);
 	}

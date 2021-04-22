@@ -15,9 +15,9 @@ public interface AppService {
 
 	public Ship getShip(UUID shipId);
 
-	public List<Ship> addShip(Ship ship);
+	public Ship addShip(Ship ship);
 	
-	public List<Ship> deleteShip(UUID shipId);
+	public void deleteShip(UUID shipId);
 
-	public List<Ship> updateShip(ShipPayloadDto shipPayloadDto);
+	public Ship updateShip(ShipPayloadDto shipPayloadDto);
 }

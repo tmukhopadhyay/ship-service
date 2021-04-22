@@ -15,4 +15,19 @@ export class AppStore {
   public setShips(ships: Array<Ship>) {
     this.ships.next(ships);
   }
+
+  public addShip(ship: Ship) {
+    this.ships.next([ ship, ...this.ships.getValue() ]);
+  }
+
+  public updateShip(ship: Ship) {
+    this.ships.next([
+      ship,
+      ...this.ships.getValue().filter(s => s.shipId !== ship.shipId)
+    ]);
+  }
+
+  public deleteShip(shipId: string) {
+    this.ships.next(this.ships.getValue().filter(s => s.shipId !== shipId));
+  }
 }

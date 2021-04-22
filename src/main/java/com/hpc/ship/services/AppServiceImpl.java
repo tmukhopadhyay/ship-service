@@ -39,31 +39,28 @@ public class AppServiceImpl implements AppService {
 
 	@Override
 	@Transactional
-	public List<Ship> addShip(Ship ship) {
-		shipRepository.saveAndFlush(ship);
-		return getAllShips();
+	public Ship addShip(Ship ship) {
+		return shipRepository.saveAndFlush(ship);
 	}
 
 	@Override
 	@Transactional
-	public List<Ship> deleteShip(UUID shipId) {
+	public void deleteShip(UUID shipId) {
 		if(!shipRepository.existsById(shipId)) {
 			throw new ShipNotFoundException(AppConstants.SHIP_NOT_FOUND_ERR_MESSAGE + shipId);
 		}
 		
 		shipRepository.deleteById(shipId);
-		return getAllShips();
 	}
 
 	@Override
 	@Transactional
-	public List<Ship> updateShip(ShipPayloadDto shipPayloadDto) {
+	public Ship updateShip(ShipPayloadDto shipPayloadDto) {
 		UUID shipId = shipPayloadDto.getShipId();
 		Ship ship = shipRepository
 				.findById(shipId)
 				.orElseThrow(() -> new ShipNotFoundException(AppConstants.SHIP_NOT_FOUND_ERR_MESSAGE + shipId));
 
-		shipRepository.saveAndFlush(TransformUtils.transformToShipEntity(ship, shipPayloadDto));
-		return getAllShips();
+		return shipRepository.saveAndFlush(TransformUtils.transformToShipEntity(ship, shipPayloadDto));
 	}
 }

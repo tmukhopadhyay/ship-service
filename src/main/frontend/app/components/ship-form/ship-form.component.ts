@@ -29,7 +29,6 @@ export class ShipFormComponent implements OnInit, OnDestroy {
 
   private createShipSubscription?: Subscription;
   private updateShipSubscription?: Subscription;
-  private editShipSubscription?: Subscription;
 
   constructor(
     private appStore: AppStore,
@@ -47,17 +46,17 @@ export class ShipFormComponent implements OnInit, OnDestroy {
 
   public addShip(event: Event) {
     event.preventDefault();
-    this.createShipSubscription = this.httpService.addShip(this.shipForm?.value).subscribe((ships: Array<Ship>) => {
+    this.createShipSubscription = this.httpService.addShip(this.shipForm?.value).subscribe((newShip: Ship) => {
       this.notificationService.showSuccess('Ship details added successfully');
+      this.appStore.addShip(newShip);
       this.form?.resetForm();
-      this.appStore.setShips(ships);
     });
   }
 
   public updateShip(event: Event) {
     event.preventDefault();
-    this.updateShipSubscription = this.httpService.updateShip(this.shipForm?.value).subscribe((ships: Array<Ship>) => {
-      this.appStore.setShips(ships);
+    this.updateShipSubscription = this.httpService.updateShip(this.shipForm?.value).subscribe((updatedShip: Ship) => {
+      this.appStore.updateShip(updatedShip);
       this.onUpdate.emit(true);
     });
   }
@@ -65,6 +64,5 @@ export class ShipFormComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {
     if(this.createShipSubscription) { this.createShipSubscription.unsubscribe(); }
     if(this.updateShipSubscription) { this.updateShipSubscription.unsubscribe(); }
-    if(this.editShipSubscription) { this.editShipSubscription.unsubscribe(); }
   }
 }

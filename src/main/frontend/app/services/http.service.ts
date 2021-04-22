@@ -21,15 +21,15 @@ export class HttpService {
     return this.httpClient.get<Ship>(`${this.serverBaseUrl}/ship/${shipId}`);
   }
 
-  public addShip(shipPayload: ShipPayload): Observable<Array<Ship>> {
-    return this.httpClient.post<Array<Ship>>(`${this.serverBaseUrl}/ships`, shipPayload);
+  public addShip(shipPayload: ShipPayload): Observable<Ship> {
+    return this.httpClient.post<Ship>(`${this.serverBaseUrl}/ships`, shipPayload);
   }
 
-  public deleteShip(shipId: string): Observable<Array<Ship>> {
-    return this.httpClient.delete<Array<Ship>>(`${this.serverBaseUrl}/ships/${shipId}`);
+  public deleteShip(shipId: string) {
+    return this.httpClient.delete(`${this.serverBaseUrl}/ships/${shipId}`);
   }
 
-  public updateShip(shipPayload: ShipPayload): Observable<Array<Ship>> {
-    return this.httpClient.put<Array<Ship>>(`${this.serverBaseUrl}/ships`, shipPayload);
+  public updateShip(shipPayload: ShipPayload): Observable<Ship> {
+    return this.httpClient.put<Ship>(`${this.serverBaseUrl}/ships`, shipPayload);
   }
 }

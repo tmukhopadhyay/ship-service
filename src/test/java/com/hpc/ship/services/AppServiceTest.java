@@ -89,7 +89,7 @@ public class AppServiceTest {
 
 	@Test
 	void shouldUpdateShipDetails() {
-		assertThat(appService.updateShip(shipPayloadDto)).hasSize(shipEntities.size());
+		assertEquals(appService.updateShip(shipPayloadDto).getShipId(), shipPayloadDto.getShipId());
 	}
 
 	@Test

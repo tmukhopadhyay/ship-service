@@ -32,7 +32,7 @@ export class ShipListComponent implements OnInit, OnDestroy {
     private notificationService: NotificationService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.shipSubscription = this.appStore.ships$.subscribe((ships: Array<Ship>) => {
       this.ships = ships;
       this.dataSource = new MatTableDataSource<Ship>(ships.length ? ships : [{'code': 'No data available'} as Ship]);
@@ -41,16 +41,14 @@ export class ShipListComponent implements OnInit, OnDestroy {
   }
 
   public editShipDetails(ship: Ship) {
-    const dialogRef = this.dialog.open(ShipEditDialogComponent, {
-      data: ship
-    });
+    this.dialog.open(ShipEditDialogComponent, { data: ship });
   }
 
   public deleteShip(shipId: string) {
     if(confirm('Are you sure you want to delete this ship?')) {
-      this.deleteShipSubscription = this.httpService.deleteShip(shipId).subscribe((ships: Array<Ship>) => {
+      this.deleteShipSubscription = this.httpService.deleteShip(shipId).subscribe(() => {
         this.notificationService.showSuccess('Ship deleted successfully');
-        this.appStore.setShips(ships)
+        this.appStore.deleteShip(shipId);
       });
     }
   }

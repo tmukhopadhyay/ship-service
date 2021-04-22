@@ -50,11 +50,11 @@ public class AppControllerTest {
 		Mockito.when(appService.getAllShips()).thenReturn(shipEntities);
 		Mockito.when(appService.getShip(shipId)).thenReturn(ship);
 		Mockito.when(appService.getShip(invalidShipId)).thenThrow(ShipNotFoundException.class);
-		Mockito.when(appService.addShip(ship)).thenReturn(shipEntities);
-		Mockito.when(appService.updateShip(shipPayloadDto)).thenReturn(shipEntities);
+		Mockito.when(appService.addShip(Mockito.any())).thenReturn(ship);
+		Mockito.when(appService.updateShip(shipPayloadDto)).thenReturn(ship);
 		Mockito.when(appService.updateShip(invalidShipPayloadDto)).thenThrow(ShipNotFoundException.class);
-		Mockito.when(appService.deleteShip(shipId)).thenReturn(shipEntities);
-		Mockito.when(appService.deleteShip(invalidShipId)).thenThrow(ShipNotFoundException.class);
+		Mockito.doNothing().when(appService).deleteShip(shipId);
+		Mockito.doThrow(new ShipNotFoundException()).when(appService).deleteShip(invalidShipId);
 	}
 
 	@Test
